@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     //Evaluation of input and Toast with "correct" or "incorrect"
    public void peopleAnswer(View view){
 
-        if(peopleEditText.getText().toString().equals(answerPeople.getName()) ){
+        if(peopleEditText.getText().toString().toLowerCase().equals(answerPeople.getName().toLowerCase())){
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Incorrect, it was " + answerPeople.getName(), Toast.LENGTH_SHORT).show();
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void filmAnswer(View view){
-        if(filmsEditText.getText().toString().equals(answerFilm.getTitle()) ){
+        if(filmsEditText.getText().toString().toLowerCase().equals(answerFilm.getTitle().toLowerCase())){
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Incorrect, it was " + answerFilm.getTitle(), Toast.LENGTH_SHORT).show();
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void planetAnswer(View view){
-        if(planetsEditText.getText().toString().equals(answerPlanets.getName()) ){
+        if(planetsEditText.getText().toString().toLowerCase().equals(answerPlanets.getName().toLowerCase())){
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Incorrect, it was " + answerPlanets.getName(), Toast.LENGTH_SHORT).show();
