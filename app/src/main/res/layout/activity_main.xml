@@ -5,6 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -25,6 +26,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="vehiclesReturnMain"
             android:text="Return" />
 
@@ -44,6 +46,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="340dp"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -60,7 +63,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/vehiclesAnswer"
@@ -74,6 +78,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="vehiclesAnswer"
             android:text="Guess" />
 
@@ -97,6 +102,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="starshipsReturnMain"
             android:text="Return" />
 
@@ -116,6 +122,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="340dp"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -132,7 +139,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/starshipsAnswer"
@@ -146,6 +154,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="starshipsAnswer"
             android:text="Guess" />
 
@@ -169,6 +178,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="speciesReturnMain"
             android:text="Return" />
 
@@ -188,6 +198,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="340dp"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -204,7 +215,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/speciesAnswer"
@@ -218,6 +230,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="speciesAnswer"
             android:text="Guess" />
 
@@ -242,6 +255,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="planetsReturnMain"
             android:text="Return" />
 
@@ -261,6 +275,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="340dp"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -277,7 +292,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/planetsAnswer"
@@ -291,6 +307,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="planetAnswer"
             android:text="Guess" />
 
@@ -314,6 +331,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="filmsReturnMain"
             android:text="Return" />
 
@@ -333,6 +351,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="300dp"
                 android:textSize="25dp" />
         </RelativeLayout>
@@ -349,7 +368,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/filmsAnswer"
@@ -363,6 +383,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="filmAnswer"
             android:text="Guess" />
 
@@ -380,6 +401,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchFilms"
             android:tag="films"
             android:text="Films"
@@ -394,6 +416,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchPeople"
             android:tag="people"
             android:text="People"
@@ -408,6 +431,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchPlanets"
             android:tag="planets"
             android:text="Planets"
@@ -422,6 +446,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchSpecies"
             android:tag="species"
             android:text="Species"
@@ -436,6 +461,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchStarships"
             android:tag="startships"
             android:text="Starships"
@@ -450,6 +476,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="#FFC107"
             android:onClick="switchVehicles"
             android:tag="vehicles"
             android:text="Vehicles"
@@ -478,6 +505,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="peopleReturnMain"
             android:text="Return" />
 
@@ -497,6 +525,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="#FFC107"
                 android:maxHeight="340dp"
                 android:textSize="25sp" />
         </RelativeLayout>
@@ -513,7 +542,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFC107" />
 
         <Button
             android:id="@+id/peopleAnswer"
@@ -527,6 +557,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFC107"
             android:onClick="peopleAnswer"
             android:text="Guess" />
 

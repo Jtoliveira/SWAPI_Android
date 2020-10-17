@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
     public static People answerPeople;
     public static Film answerFilm;
     public static Planets answerPlanets;
-    public static Species answerSpecies; //
+    public static Species answerSpecies;
     public static Starships answerStarships;
-    public static Vehicles answerVehicles; //,
+    public static Vehicles answerVehicles;
 
     //Layouts
     GridLayout mainGrid;
