@@ -116,7 +116,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:maxHeight="340dp"
+                android:maxHeight="300dp"
                 android:textSize="25dp" />
         </RelativeLayout>
 
