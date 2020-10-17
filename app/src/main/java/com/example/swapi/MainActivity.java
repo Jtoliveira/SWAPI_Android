@@ -17,18 +17,24 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Answers
     public static People answerPeople;
     public static Film answerFilm;
+    public static Planets answerPlanets;
 
     //Layouts
     GridLayout mainGrid;
     RelativeLayout peopleLayout;
     RelativeLayout filmsLayout;
+    RelativeLayout planetsLayout;
 
+    //Text views and inputs
     static TextView peopleTextView;
     EditText peopleEditText;
     static TextView filmsTextView;
     EditText filmsEditText;
+    static TextView planetsTextView;
+    EditText planetsEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         filmsTextView = findViewById(R.id.filmsTextView);
        filmsEditText = findViewById(R.id.filmsEditText);
        filmsTextView.setMovementMethod(new ScrollingMovementMethod()); //scrollable text view
+
+        planetsLayout = findViewById(R.id.planetsLayout);
+        planetsTextView = findViewById(R.id.planetsTextView);
+        planetsEditText = findViewById(R.id.planetsEditText);
     }
 
     //These functions could be just one "switchMain" function,
@@ -59,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
         mainGrid.setVisibility(View.VISIBLE);
     }
 
-    //Main grid -> people Layout
+    public void planetsReturnMain(View view){
+        planetsLayout.setVisibility(View.INVISIBLE);
+        mainGrid.setVisibility(View.VISIBLE);
+    }
+
+    //Main grid -> Layouts
     public void switchPeople(View view){
         mainGrid.setVisibility(View.INVISIBLE);
         peopleLayout.setVisibility(View.VISIBLE);
@@ -72,7 +87,13 @@ public class MainActivity extends AppCompatActivity {
         generateFilm();
     }
 
-    //New Request with another person
+    public void switchPlanets(View view){
+        mainGrid.setVisibility(View.INVISIBLE);
+        planetsLayout.setVisibility(View.VISIBLE);
+        generatePlanets();
+    }
+
+    //New Requests at the API
     public void generatePeople(){
         DownloadPeople dl = new DownloadPeople();
 
@@ -97,6 +118,18 @@ public class MainActivity extends AppCompatActivity {
         dl.execute("https://swapi.dev/api/films/" + n + "/"); //random film in the API
     }
 
+    public void generatePlanets(){
+        DownloadPlanets dl = new DownloadPlanets();
+
+        Random rand  = new Random();
+
+        int n = rand.nextInt(60); //0 to 59
+
+        n += 1; //1 to 60
+
+        dl.execute("https://swapi.dev/api/planets/" + n + "/"); //random film in the API
+    }
+
     //Evaluation of input and Toast with "correct" or "incorrect"
    public void peopleAnswer(View view){
 
@@ -119,6 +152,17 @@ public class MainActivity extends AppCompatActivity {
 
         filmsEditText.setText("");
         generateFilm();
+    }
+
+    public void planetAnswer(View view){
+        if(planetsEditText.getText().toString().equals(answerPlanets.getName()) ){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Incorrect, it was " + answerPlanets.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+        planetsEditText.setText("");
+        generatePlanets();
     }
 
     //Translates Movie urls into movie titles, saves another API request for the movie title since there's 6 movies in the API
