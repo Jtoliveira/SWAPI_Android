@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import androidx.gridlayout.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,13 +17,17 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     public static People answerPeople;
+    public static Film answerFilm;
 
     //Layouts
     GridLayout mainGrid;
     RelativeLayout peopleLayout;
+    RelativeLayout filmsLayout;
 
     static TextView peopleTextView;
     EditText peopleEditText;
+    static TextView filmsTextView;
+    EditText filmsEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +35,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+
         peopleLayout = findViewById(R.id.peopleLayout);
         peopleTextView = findViewById(R.id.peopleTextView);
         peopleEditText = findViewById(R.id.peopleEditText);
 
+        filmsLayout = findViewById(R.id.filmsLayout);
+        filmsTextView = findViewById(R.id.filmsTextView);
+       filmsEditText = findViewById(R.id.filmsEditText);
     }
 
     //These functions could be just one "switchMain" function,
@@ -47,11 +52,22 @@ public class MainActivity extends AppCompatActivity {
        mainGrid.setVisibility(View.VISIBLE);
     }
 
+    public void filmsReturnMain(View view){
+        filmsLayout.setVisibility(View.INVISIBLE);
+        mainGrid.setVisibility(View.VISIBLE);
+    }
+
     //Main grid -> people Layout
     public void switchPeople(View view){
         mainGrid.setVisibility(View.INVISIBLE);
         peopleLayout.setVisibility(View.VISIBLE);
         generatePeople();
+    }
+
+    public void switchFilms(View view){
+        mainGrid.setVisibility(View.INVISIBLE);
+        filmsLayout.setVisibility(View.VISIBLE);
+        generateFilm();
     }
 
     //New Request with another person
@@ -64,9 +80,19 @@ public class MainActivity extends AppCompatActivity {
 
         n += 1; //1 to 82
 
-        Log.i("cenas", "https://swapi.dev/api/people/" + n + "/");
-
         dl.execute("https://swapi.dev/api/people/" + n + "/"); //random person in the API
+    }
+
+    public void generateFilm(){
+        DownloadFilm dl = new DownloadFilm();
+
+        Random rand  = new Random();
+
+        int n = rand.nextInt(6); //0 to 5
+
+        n += 1; //1 to 6
+
+        dl.execute("https://swapi.dev/api/films/" + n + "/"); //random film in the API
     }
 
     //Evaluation of input and Toast with "correct" or "incorrect"
@@ -80,6 +106,17 @@ public class MainActivity extends AppCompatActivity {
 
         peopleEditText.setText("");
         generatePeople();
+    }
+
+    public void filmAnswer(View view){
+        if(filmsEditText.getText().toString().equals(answerFilm.getTitle()) ){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Incorrect, it was " + answerFilm.getTitle(), Toast.LENGTH_SHORT).show();
+        }
+
+        filmsEditText.setText("");
+        generateFilm();
     }
 
     //Translates Movie urls into movie titles, saves another API request for the movie title since there's 6 movies in the API
