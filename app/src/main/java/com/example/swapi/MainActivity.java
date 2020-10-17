@@ -21,12 +21,16 @@ public class MainActivity extends AppCompatActivity {
     public static People answerPeople;
     public static Film answerFilm;
     public static Planets answerPlanets;
+    public static Species answerSpecies; //37
+    /*public static Starships answerStarships; //36
+    public static Vehicles answerVehicles;*/ //39
 
     //Layouts
     GridLayout mainGrid;
     RelativeLayout peopleLayout;
     RelativeLayout filmsLayout;
     RelativeLayout planetsLayout;
+    RelativeLayout speciesLayout;
 
     //Text views and inputs
     static TextView peopleTextView;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     EditText filmsEditText;
     static TextView planetsTextView;
     EditText planetsEditText;
+    static TextView speciesTextView;
+    EditText speciesEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
         planetsLayout = findViewById(R.id.planetsLayout);
         planetsTextView = findViewById(R.id.planetsTextView);
         planetsEditText = findViewById(R.id.planetsEditText);
+
+        speciesLayout = findViewById(R.id.speciesLayout);
+        speciesTextView = findViewById(R.id.speciesTextView);
+        speciesEditText = findViewById(R.id.speciesEditText);
+        speciesTextView.setMovementMethod(new ScrollingMovementMethod()); //scrollable text view
     }
 
     //These functions could be just one "switchMain" function,
@@ -71,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void planetsReturnMain(View view){
         planetsLayout.setVisibility(View.INVISIBLE);
+        mainGrid.setVisibility(View.VISIBLE);
+    }
+
+    public void speciesReturnMain(View view){
+        speciesLayout.setVisibility(View.INVISIBLE);
         mainGrid.setVisibility(View.VISIBLE);
     }
 
@@ -91,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
         mainGrid.setVisibility(View.INVISIBLE);
         planetsLayout.setVisibility(View.VISIBLE);
         generatePlanets();
+    }
+
+    public void switchSpecies(View view){
+        mainGrid.setVisibility(View.INVISIBLE);
+        speciesLayout.setVisibility(View.VISIBLE);
+        generateSpecies();
     }
 
     //New Requests at the API
@@ -130,6 +152,18 @@ public class MainActivity extends AppCompatActivity {
         dl.execute("https://swapi.dev/api/planets/" + n + "/"); //random film in the API
     }
 
+    public void generateSpecies(){
+        DownloadSpecies dl = new DownloadSpecies();
+
+        Random rand  = new Random();
+
+        int n = rand.nextInt(37);
+
+        n += 1;
+
+        dl.execute("https://swapi.dev/api/species/" + n + "/"); //random film in the API
+    }
+
     //Evaluation of input and Toast with "correct" or "incorrect"
    public void peopleAnswer(View view){
 
@@ -163,6 +197,17 @@ public class MainActivity extends AppCompatActivity {
 
         planetsEditText.setText("");
         generatePlanets();
+    }
+
+    public void speciesAnswer(View view){
+        if(speciesEditText.getText().toString().toLowerCase().equals(answerSpecies.getName().toLowerCase())){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Incorrect, it was " + answerSpecies.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+        speciesEditText.setText("");
+        generateSpecies();
     }
 
     //Translates Movie urls into movie titles, saves another API request for the movie title since there's 6 movies in the API
