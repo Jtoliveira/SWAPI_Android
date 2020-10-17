@@ -8,6 +8,78 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/vehiclesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <Button
+            android:id="@+id/vehiclesReturnMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="vehiclesReturnMain"
+            android:text="Return" />
+
+        <RelativeLayout
+            android:id="@+id/vehiclesRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vehiclesReturnMain">
+
+            <TextView
+                android:id="@+id/vehiclesTextView"
+                android:layout_width="388dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:maxHeight="340dp"
+                android:textSize="25dp" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/vehiclesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vehiclesRelativeLayout"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/vehiclesAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vehiclesEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="vehiclesAnswer"
+            android:text="Guess" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/starshipsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -378,6 +450,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="switchVehicles"
             android:tag="vehicles"
             android:text="Vehicles"
             android:textSize="20sp"
