@@ -3,6 +3,7 @@ package com.example.swapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         filmsLayout = findViewById(R.id.filmsLayout);
         filmsTextView = findViewById(R.id.filmsTextView);
        filmsEditText = findViewById(R.id.filmsEditText);
+       filmsTextView.setMovementMethod(new ScrollingMovementMethod()); //scrollable text view
     }
 
     //These functions could be just one "switchMain" function,
