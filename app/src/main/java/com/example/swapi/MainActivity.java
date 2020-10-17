@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public static Film answerFilm;
     public static Planets answerPlanets;
     public static Species answerSpecies; //37
-    /*public static Starships answerStarships; //36
-    public static Vehicles answerVehicles;*/ //39
+    public static Starships answerStarships; //2,3,5,9,10,11,12,13,15,17,21,22,23,27,28,29,31,32
+    //public static Vehicles answerVehicles;*/ //39
 
     //Layouts
     GridLayout mainGrid;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout filmsLayout;
     RelativeLayout planetsLayout;
     RelativeLayout speciesLayout;
+    RelativeLayout starshipsLayout;
 
     //Text views and inputs
     static TextView peopleTextView;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     EditText planetsEditText;
     static TextView speciesTextView;
     EditText speciesEditText;
+    static TextView starshipsTextView;
+    EditText starshipsEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
         speciesLayout = findViewById(R.id.speciesLayout);
         speciesTextView = findViewById(R.id.speciesTextView);
         speciesEditText = findViewById(R.id.speciesEditText);
-        speciesTextView.setMovementMethod(new ScrollingMovementMethod()); //scrollable text view
+
+        starshipsLayout = findViewById(R.id.starshipsLayout);
+        starshipsTextView = findViewById(R.id.starshipsTextView);
+        starshipsEditText = findViewById(R.id.starshipsEditText);
     }
 
     //These functions could be just one "switchMain" function,
@@ -87,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void speciesReturnMain(View view){
         speciesLayout.setVisibility(View.INVISIBLE);
+        mainGrid.setVisibility(View.VISIBLE);
+    }
+
+    public void starshipsReturnMain(View view){
+        starshipsLayout.setVisibility(View.INVISIBLE);
         mainGrid.setVisibility(View.VISIBLE);
     }
 
@@ -113,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
         mainGrid.setVisibility(View.INVISIBLE);
         speciesLayout.setVisibility(View.VISIBLE);
         generateSpecies();
+    }
+
+    public void switchStarships(View view){
+        mainGrid.setVisibility(View.INVISIBLE);
+        starshipsLayout.setVisibility(View.VISIBLE);
+        generateStarships();
     }
 
     //New Requests at the API
@@ -164,6 +181,19 @@ public class MainActivity extends AppCompatActivity {
         dl.execute("https://swapi.dev/api/species/" + n + "/"); //random film in the API
     }
 
+    public void generateStarships(){
+        DownloadStarships dl = new DownloadStarships();
+
+        Random rand  = new Random();
+
+        Integer[] ships = {2,3,5,9,10,11,12,13,15,17,21,22,23,27,28,29,31,32};
+
+        int n = rand.nextInt(ships.length);
+
+
+        dl.execute("https://swapi.dev/api/starships/" + ships[n] + "/"); //random film in the API
+    }
+
     //Evaluation of input and Toast with "correct" or "incorrect"
    public void peopleAnswer(View view){
 
@@ -208,6 +238,17 @@ public class MainActivity extends AppCompatActivity {
 
         speciesEditText.setText("");
         generateSpecies();
+    }
+
+    public void starshipsAnswer(View view){
+        if(starshipsEditText.getText().toString().toLowerCase().equals(answerStarships.getName().toLowerCase())){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Incorrect, it was " + answerStarships.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+        starshipsEditText.setText("");
+        generateStarships();
     }
 
     //Translates Movie urls into movie titles, saves another API request for the movie title since there's 6 movies in the API
